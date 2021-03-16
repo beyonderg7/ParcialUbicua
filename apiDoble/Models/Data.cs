@@ -13,6 +13,7 @@ namespace apiDoble.Models
 
         [Key]
         public int aleatorio { get; set; }
+
       
         [DataType(DataType.DateTime)]
         [Required]
