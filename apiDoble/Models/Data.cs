@@ -9,14 +9,16 @@ namespace apiDoble.Models
     public class Data
 
     {
+
+
         [Key]
-        public string NameDevice { get; set; }
+        public int aleatorio { get; set; }
+      
         [DataType(DataType.DateTime)]
         [Required]
-        public DateTime EventDateTime { get; set; }
-        [Required]
-        public string Event { get; set; }
-
+        public DateTime DateTime { get; set; }
+       
+       
 
     }
 }
