@@ -23,18 +23,46 @@ namespace apiDoble.Controllers
             string queueName = "qlmpar";
             string mensaje = JsonConvert.SerializeObject(data);
 
-            // create a Service Bus client 
-            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
+            string connectionString2 = "Endpoint=sb://yabetaholding.servicebus.windows.net/;SharedAccessKeyName=Enviar;SharedAccessKey=Ksuvmm2gSLQGw7bfFCjCyp/5Hw6rzbwBwglTPGW6sls=;EntityPath=qpar";
+            string queueName2 = "qpar";
+            string mensaje2 = JsonConvert.SerializeObject(data);
+
+            if (paroImpar(data.aleatorio)==false)
             {
-                // create a sender for the queue 
-                ServiceBusSender sender = client.CreateSender(queueName);
+                // create a Service Bus client 
+                await using (ServiceBusClient client = new ServiceBusClient(connectionString))
+                {
+                    // create a sender for the queue 
+                    ServiceBusSender sender = client.CreateSender(queueName);
 
-                // create a message that we can send
-                ServiceBusMessage message = new ServiceBusMessage(mensaje);
+                    // create a message that we can send
+                    ServiceBusMessage message = new ServiceBusMessage(mensaje);
 
-                // send the message
-                await sender.SendMessageAsync(message);
-                Console.WriteLine($"Sent a single message to the queue: {queueName}");
+                    // send the message
+                    await sender.SendMessageAsync(message);
+                    Console.WriteLine($"Sent a single message to the queue: {queueName}");
+
+                }
+            }//par
+
+            else
+            {
+                // create a Service Bus client 
+                await using (ServiceBusClient client = new ServiceBusClient(connectionString2))
+                {
+                    // create a sender for the queue 
+                    ServiceBusSender sender = client.CreateSender(queueName2);
+
+                    // create a message that we can send
+                    ServiceBusMessage message = new ServiceBusMessage(mensaje2);
+
+                    // send the message
+                    await sender.SendMessageAsync(message);
+                    Console.WriteLine($"Sent a single message to the queue: {queueName2}");
+
+
+
+                }
             }
 
             return true;
