@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace apiDoble.Models
+namespace fncConsumidor.Models
 {
-    public class Data
-
+    class Data
     {
 
 
@@ -17,8 +15,7 @@ namespace apiDoble.Models
         [DataType(DataType.DateTime)]
         [Required]
         public DateTime DateTime { get; set; }
-       
-       
+
 
     }
 }

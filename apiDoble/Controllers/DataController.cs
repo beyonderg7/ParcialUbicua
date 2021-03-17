@@ -19,8 +19,8 @@ namespace apiDoble.Controllers
         public async Task<bool> EnviarAsync([FromBody] Data data)
         {
 
-            string connectionString = "Endpoint=sb://yabetaholding.servicebus.windows.net/;SharedAccessKeyName=Enviar;SharedAccessKey=RypdtkeHAdSf8LxbIx2LWJoEbetcsuvzxMrp5mEs+gM=;EntityPath=cola1";
-            string queueName = "cola1";
+            string connectionString = "Endpoint=sb://yabetaholding.servicebus.windows.net/;SharedAccessKeyName=Enviar;SharedAccessKey=+hyKXSMdI6dmjwNbq0zdU/8o6b18D4h/vOCPd1eba4A=;EntityPath=qlmpar";
+            string queueName = "qlmpar";
             string mensaje = JsonConvert.SerializeObject(data);
 
             // create a Service Bus client 
@@ -40,5 +40,27 @@ namespace apiDoble.Controllers
             return true;
         }
 
+
+        public Boolean paroImpar(int v)
+        {
+            if (v % 2 == 0)
+            {
+
+
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
+
+
+
+        }
+
     }
+
+   
+
 }
