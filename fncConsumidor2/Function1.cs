@@ -1,16 +1,16 @@
 using System;
-using fncConsumidor.Models;
+using fncConsumidor2.Models;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace fncConsumidor
+namespace fncConsumidor2
 {
     public static class Function1
     {
         [FunctionName("Function1")]
-        public static void Run([ServiceBusTrigger("qlmpar", Connection = "MyConn")] string myQueueItem, ILogger log)
+        public static void Run([ServiceBusTrigger("qpar", Connection = "MyConn2")] string myQueueItem, ILogger log)
         {
             log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
 
@@ -28,7 +28,5 @@ namespace fncConsumidor
                 log.LogError($"No fue posible consumir los datos: {e.Message}");
             }
         }
-        
     }
-
 }
